@@ -1,0 +1,81 @@
+
+How Do You Use Raise And Print() With Error Handling.
+
+
+how do you use print() function and raise keyword in a situation where an error depends on the user input and the output error depends on the developer."""
+
+
+#######   Script One   ########
+
+
+print("####  Using Print()  #### ")
+
+passwd = input("enter:")
+
+def valid():
+	if len(passwd) < 6:
+		print("Error!\n")
+		print("Invalid Password, Password Must Be Minimum Of 6")
+	else:
+		print("valid Password")
+		print("Run succesfully!!")
+valid()
+		
+
+def add_to_db():
+	db = []
+	db.append(passwd)
+	for x in db:
+		if len(x) < 6:
+		    print("invalid but still get added to database(", "database=", db, ")", "\n\n")
+		
+add_to_db()
+
+with the print() inside the conditional statement if the variable value is not valid another function can make use of the variable and i think this is bad idea in some situation.
+
+
+######    Scenerio One   #######
+
+
+let take a simple example. let say you are writing a script(the script is above) that contains 2 functions with a global variable named passwd. first function check if the password is valid by length, second function take the variable and save it to the database and the thing about our script is that our second function depend on the validity of the first function in creepy way, in which once the first function run succesfully that means the passwd variable value is valid and it can now work on the password too by saving it to the database mean while, what our first function did to handle the validity is if/else statement and the  print() functoon inside the if/else statement to be run if the condition is true or false which is actually bad and this is bad because it is using  print() function to output error code base on the codition but because of this kind act our first program will run sucessfully even if the password is invalid because it is handle with if/else/print() which either run what inside the if block if the condition is true or the else block if the codition is not true which is false and running the print()(which just print out strings as error code) funtion inside the if block or the else block does not stop other code from runnig, and this kind of program will always save all kind of password length into the database.
+
+
+######   Script Two   ######
+
+print("####  Using Raise  #### ")
+
+passwd = input("Enter:")
+def valid_r():
+		if len(passwd) < 6:
+			raise ValueError("Invalid Password, Password Must Be Minimum Of 6")
+		else:
+			print("Valid Password")
+
+valid_r()
+
+def add_to_db_r():
+	db_r = []
+	db_r.append(passwd)
+	print("Run Succesfully!!!")
+		
+add_to_db_r()
+
+
+with the raise inside the conditional statement if the variable value is not valid another function can't make use of the variable and i think this is good idea in some situation.
+
+
+##########   Scenerio Two   #########
+
+this example is similar to the firat scenerio the different is the using raise inside the coditional statement(logic).
+
+Not using the print() function and making use of the raise keyword to handle this kind of situation is cool, because you can just go ahead and throw error which will stop the program and once a program is stop, any other program after the the line it get stoped won't be able to run, but program prior to the line it get stop will get run(by throwing error in the first funtion the second function program won't be able to run because the second program depends on the first program sucessfull running). therefore this will make the second function unable to process and use the variable because our program will stop at the line we raise an error. so raising an error and not just printing out mesaages is the better way of handle this kind of situation
+
+
+
+##########  Handling Error  #######
+
+
+	
+	
+
+	
